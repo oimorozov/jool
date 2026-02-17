@@ -1,0 +1,25 @@
+LBRACE
+STRING(example_json)
+COLON
+STRING(hello world)
+COMMA
+STRING(number_example)
+COLON
+NUMBER(-123.123)
+COMMA
+STRING(2-depth example:{})
+COLON
+LBRACE
+STRING(false)
+COLON
+FALSE
+COMMA
+STRING(false)
+COLON
+TRUE
+COMMA
+STRING(null)
+COLON
+NULL
+RBRACE
+RBRACE

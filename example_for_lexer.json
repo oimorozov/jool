@@ -1,0 +1,9 @@
+{
+    "example_json": "hello world",
+    "number_example": -123.123,
+    "2-depth example:{}": {
+        "false": false,
+        "false": true,
+        "null": null
+    }
+}
