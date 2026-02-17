@@ -1,5 +1,7 @@
 # Jool
 
+**Not ready**
+
 CLI tool for jsons.
 
 ## sources
