@@ -26,45 +26,45 @@ def tokenize(*, input_text, filename = "lexer.txt"):
             try:
                 token = next(it)
                 if token == '{':
-                    tokenized_seq.append(Token.LBRACE.value)
+                    tokenized_seq.append((Token.LBRACE.value, '{'))
                     f.write(Token.LBRACE.value + '\n')
                 elif token == '}':
-                    tokenized_seq.append(Token.RBRACE.value)
+                    tokenized_seq.append((Token.RBRACE.value, '}'))
                     f.write(Token.RBRACE.value + '\n')
                 elif token == '[':
-                    tokenized_seq.append(Token.LBRACKET.value)
+                    tokenized_seq.append((Token.LBRACKET.value, '['))
                     f.write(Token.LBRACKET.value + '\n') 
                 elif token == ']':
-                    tokenized_seq.append(Token.RBRACKET.value)
+                    tokenized_seq.append((Token.RBRACKET.value, ']'))
                     f.write(Token.RBRACKET.value + '\n')
                 elif token == ':':
-                    tokenized_seq.append(Token.COLON.value)
+                    tokenized_seq.append((Token.COLON.value, ':'))
                     f.write(Token.COLON.value + '\n')
                 elif token == ',':
-                    tokenized_seq.append(Token.COMMA.value)
+                    tokenized_seq.append((Token.COMMA.value, ','))
                     f.write(Token.COMMA.value + '\n')
                 elif token == '"':
                     string = tokenize_string(it)
-                    tokenized_seq.append(string.strip())
-                    f.write(string)
+                    tokenized_seq.append((Token.STRING.value, string))
+                    f.write(f"{Token.STRING.value}({string})\n")
                 elif token == '-' or token == '.' or token.isdigit():
                     number, buffer = tokenize_number(it, token)
-                    tokenized_seq.append(number.strip())
-                    f.write(number)
+                    tokenized_seq.append((Token.NUMBER.value, number))
+                    f.write(f"{Token.NUMBER.value}({number})\n")
                     if buffer == ':':
-                        tokenized_seq.append(Token.COLON.value)
+                        tokenized_seq.append((Token.COLON.value, ':'))
                         f.write(Token.COLON.value + '\n')
                     elif buffer == ',':
-                        tokenized_seq.append(Token.COMMA.value)
+                        tokenized_seq.append((Token.COMMA.value, ','))
                         f.write(Token.COMMA.value + '\n')
                 elif token == 't':
-                    tokenized_seq.append(Token.TRUE.value)
+                    tokenized_seq.append((Token.TRUE.value, True))
                     f.write(Token.TRUE.value + '\n')
                 elif token == 'f':
-                    tokenized_seq.append(Token.FALSE.value)
+                    tokenized_seq.append((Token.FALSE.value, False))
                     f.write(Token.FALSE.value + '\n')
                 elif token == 'n':
-                    tokenized_seq.append(Token.NULL.value)
+                    tokenized_seq.append((Token.NULL.value, "NULL"))
                     f.write(Token.NULL.value + '\n')
             except StopIteration:
                 print("StopIteration")
@@ -87,7 +87,7 @@ def tokenize_string(it):
         except StopIteration:
             print("StopIteration")
             break
-    return f"{Token.STRING.value}({string})\n"
+    return string
 
 def tokenize_number(it, prev_token):
     number = prev_token 
@@ -103,7 +103,7 @@ def tokenize_number(it, prev_token):
         except StopIteration:
             print("StopIteration")
             break
-    return f"{Token.NUMBER.value}({number})\n", buffer
+    return number, buffer
 
 if __name__ == "__main__":
     input_file = "example_for_lexer.json"
