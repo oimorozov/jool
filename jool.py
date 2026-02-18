@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 from lexer import tokenize
+from parser import Parser
 
 SUBCOMMANDS = {
     "find": "find",
@@ -72,11 +73,16 @@ if __name__ == "__main__":
         file, *args = args
         with open(file, "r+") as f:
             input_text = f.read()
-            tokenized_seq = tokenize(input_text=input_text)
+            tokens = tokenize(input_text=input_text)
+            parser = Parser(tokens)
+            d = parser.parse()
+            output = ""
             if subcommand == SUBCOMMANDS["find"]:
-                print("Find Command")
+                # not implemented yet
+                pass
             elif subcommand == SUBCOMMANDS["remove"]:
-                print("Remove Command")
+                # not implemented yet
+                pass
             else:
                 cmd_usage(program, subcommand)
     else:

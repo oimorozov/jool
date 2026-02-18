@@ -1,10 +1,10 @@
 {
-    "example_json": "hello world",
-    "number_example": -123.123,
-    "2-depth example:{}": {
-        "false": false,
-        "false": true,
-        "null": null
-    },
-    "array": ["tomato", 10, false]
+    "string": "hello, world!\n",
+    "number": -123.456,
+    "array": ["hello", -1, null],
+    "object": {
+        "obj_string": "hello, object!\n",
+        "obj_number": -987.654,
+        "obj_array": ["hello_obj", -2, true, false]
+    }
 }
