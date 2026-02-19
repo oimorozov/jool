@@ -75,7 +75,11 @@ class Parser:
         return self.expect(Token.STRING.value)
 
     def parse_number(self):
-        return self.expect(Token.NUMBER.value)
+        number = self.expect(Token.NUMBER.value)
+        if '.' not in number:
+            return int(number)
+        else:
+            return float(number)
 
     def parse_true(self):
         self.next()

@@ -81,6 +81,7 @@ def tokenize_string(it):
                 break
             if token == '\\':
                 esc = next(it)
+                string += token[0]
                 string += esc
             else:
                 string += token
@@ -106,7 +107,7 @@ def tokenize_number(it, prev_token):
     return number, buffer
 
 if __name__ == "__main__":
-    input_file = "example_for_lexer.json"
+    input_file = "example.json"
     with open(input_file) as f:
         input_text = f.read()
         tokenized_seq = tokenize(input_text=input_text)

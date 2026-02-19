@@ -1,10 +1,20 @@
-{
+ {
     "string": "hello, world!\n",
-    "number": -123.456,
-    "array": ["hello", -1, null],
     "object": {
-        "obj_string": "hello, object!\n",
-        "obj_number": -987.654,
-        "obj_array": ["hello_obj", -2, true, false]
-    }
+        "array": [1, 2, 3, 4, 5, "string"],
+        "another_object": {
+            "True": True
+        }
+    },
+    "number": 123.456,
+    "object_array": [
+        {
+            "phone_number": 89001229303,
+            "name": "Gustavo"
+        },
+        {
+            "phone_number": 12345678902,
+            "name": "Max"
+        }
+    ]
 }

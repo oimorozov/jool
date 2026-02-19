@@ -9,6 +9,12 @@ SUBCOMMANDS = {
     #TBD: more commands 
 }
 
+def find_kv(*, search, json_dict):
+    pass
+
+def remove_kv(*, search, json_dict):
+    pass
+
 def lev(s1 ,s2):
     n1 = len(s1)
     n2 = len(s2)
@@ -69,20 +75,19 @@ if __name__ == "__main__":
     elif n == 4:
         program, *args = sys.argv
         subcommand, *args = args
-        word, *args = args
+        search, *args = args
         file, *args = args
         with open(file, "r+") as f:
             input_text = f.read()
             tokens = tokenize(input_text=input_text)
             parser = Parser(tokens)
-            d = parser.parse()
+            json_dict = parser.parse()
             output = ""
             if subcommand == SUBCOMMANDS["find"]:
-                # not implemented yet
-                pass
+                # find_kv(search=search, json_dict=json_dict)
             elif subcommand == SUBCOMMANDS["remove"]:
-                # not implemented yet
-                pass
+                # remove_kv(search=search, json_dict=json_dict)
+                ...
             else:
                 cmd_usage(program, subcommand)
     else:
@@ -92,3 +97,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     sys.exit(0)
+
+
+
